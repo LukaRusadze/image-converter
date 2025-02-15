@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 
 export type ImageResponse = {
   fileName: string;
-  data: string;
+  path: string;
 };
 
 const ImageContext = createContext<{

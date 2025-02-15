@@ -1,11 +1,10 @@
-import { ConvertedImages } from "@/components/converted-images";
-import { FileDropper } from "@/components/file-dropper";
+import { Converter } from "@/components/converter";
 import { Zap, Shield, Repeat } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 flex flex-col items-center">
         <section className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Image Format Converter</h1>
           <p className="text-xl text-gray-600">
@@ -14,11 +13,7 @@ export default function Home() {
           </p>
         </section>
 
-        <FileDropper />
-
-        <section className="mb-8">
-          <ConvertedImages />
-        </section>
+        <Converter />
 
         <section className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center">

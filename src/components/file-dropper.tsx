@@ -2,14 +2,10 @@
 
 import { Upload } from "lucide-react";
 import { Button } from "./ui/button";
-import { useRef } from "react";
-import { convertImagesToPNG } from "@/actions/images";
-import { useImage } from "@/contexts/image-contexts";
+import { startTransition, useRef } from "react";
 
-export function FileDropper() {
+export function FileDropper(props: { convert: (files: FileList) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const { setFiles } = useImage();
 
   function onClick(event: React.MouseEvent) {
     event.preventDefault();
@@ -23,8 +19,9 @@ export function FileDropper() {
       return;
     }
 
-    const pngs = await convertImagesToPNG(files);
-    setFiles((state) => [...state, ...pngs]);
+    startTransition(() => {
+      props.convert(files);
+    });
   }
 
   return (
